@@ -18,8 +18,7 @@ class ChatRoom(TimeStampedModel):
         if not self.slug:
             self.slug = generate_unique_slug(self.name)
 
-        super().save(*args, **kwargs)
-    
+        super().save(*args, **kwargs)    
 
 class Message(TimeStampedModel):
     room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE, related_name='room_messages')
