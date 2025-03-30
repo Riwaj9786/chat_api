@@ -47,12 +47,17 @@ CHANNEL_LAYERS = {
     }
 }
 ```
-This is InMemoryChannelLayer just for development but we shoul use RedisChannelLayer in production.
+This is InMemoryChannelLayer just for development but we should use RedisChannelLayer in production.
 
-
+## 4. KnoxAuthentication Middleware:
 *I am using Knox Authentication in the project.*
-4. Created the `KnoxAuthMiddleware` in the `middlewares.py` to connect websockets to the authenticated users only. If users are not authenticated, the websocket closes.
+- Created the `KnoxAuthMiddleware` in the `middlewares.py` to connect websockets to the authenticated users only. If users are not authenticated, the websocket closes.
 
-5. Customized the `ChatConsumer` in `consumers.py`.
+## 5. ChatConsumer
+- Customized the `ChatConsumer` in `consumers.py` to manage the sending, receiving of messages and to store the chatroom messages.
 
-6. Finally, added `AuthMiddlewareStack`, `KnoxAuthMiddleware` under `ProtocolTypeRouter` with `websocket_urlpatterns` in `asgi.py`.
+## 6. Routing
+- Finally, added `AuthMiddlewareStack`, `KnoxAuthMiddleware` under `ProtocolTypeRouter` with `websocket_urlpatterns` in `asgi.py`.
+
+## 7. Websocket Connection and Testing:
+- Tested the websocket with Postman and received and stored the messages sent in the chat rooms to the database.
